@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LearnGate Lesson Gate</title>
+  <link rel="stylesheet" href="lesson.css">
+</head>
+<body>
+  <div class="lesson-layout">
+    <!-- Top Header -->
+    <header class="lesson-header">
+      <div class="brand">
+        <div class="logo-badge">LG</div>
+        <div>
+          <h1 class="logo-title">LearnGate</h1>
+          <p class="logo-subtitle">Active Recall Focus Gate</p>
+        </div>
+      </div>
+      <div class="header-target-info">
+        <span class="target-label">Attempting to open:</span>
+        <span id="targetUrlDisplay" class="target-url">Loading...</span>
+      </div>
+    </header>
+
+    <!-- Main Quiz Container -->
+    <main class="quiz-container">
+      <!-- Intro / Gate Banner -->
+      <section class="gate-hero">
+        <div class="hero-icon">🛑</div>
+        <div class="hero-text">
+          <h2 class="hero-title">Pause & Earn Your Access</h2>
+          <p class="hero-desc">Answer at least <strong>2 of 3 questions</strong> correctly from your study notes to unlock your requested site for <strong>10 minutes</strong>.</p>
+        </div>
+      </section>
+
+      <!-- Honest AI Disclaimer -->
+      <div class="disclaimer-banner">
+        <span class="disclaimer-icon">💡</span>
+        <p class="disclaimer-text">Questions are generated locally from your pasted study notes by <strong>qwen3:4b</strong>. They are AI-synthesized and may contain minor mistakes. Verbatim source sentences are provided after submission.</p>
+      </div>
+
+      <!-- State: Empty Question Bank -->
+      <section id="emptyBankView" class="empty-bank-card hidden">
+        <div class="empty-icon">📚</div>
+        <h3>No Questions in Your Question Bank</h3>
+        <p>Your question bank is currently empty or has fewer than 3 questions. To generate questions from your own study notes:</p>
+        <ol class="setup-steps">
+          <li>Click the <strong>LearnGate</strong> icon in the Chrome toolbar.</li>
+          <li>Paste your study notes (or use our sample notes in <code>samples/</code>).</li>
+          <li>Click <strong>Generate Questions</strong>.</li>
+        </ol>
+        <p class="empty-sub">Once generated, refresh this tab to take your recall quiz.</p>
+        <button id="btnRefreshLesson" class="btn btn-secondary" type="button">Refresh Page</button>
+      </section>
+
+      <!-- State: Active Quiz -->
+      <section id="quizView" class="quiz-view">
+        <div class="quiz-progress-header">
+          <span id="quizProgressText" class="progress-indicator">Lesson Quiz (3 Questions)</span>
+          <span class="pass-requirement">Pass Mark: 2 / 3</span>
+        </div>
+
+        <!-- Dynamic Questions Form -->
+        <form id="quizForm" class="questions-list">
+          <!-- Rendered dynamically by lesson.js -->
+        </form>
+
+        <!-- Feedback & Results Section (Hidden until submitted) -->
+        <section id="quizResults" class="quiz-results hidden">
+          <div id="resultsBanner" class="results-banner">
+            <span id="resultsIcon" class="results-icon"></span>
+            <div class="results-content">
+              <h3 id="resultsTitle" class="results-title"></h3>
+              <p id="resultsDesc" class="results-desc"></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Action Controls -->
+        <div class="quiz-actions">
+          <button id="btnSubmitQuiz" class="btn btn-primary btn-lg" type="button">
+            Submit Answers
+          </button>
+          <button id="btnContinue" class="btn btn-success btn-lg hidden" type="button">
+            Continue to Site &rarr;
+          </button>
+          <button id="btnRetryQuiz" class="btn btn-secondary btn-lg hidden" type="button">
+            Try Another Quiz
+          </button>
+        </div>
+      </section>
+
+      <!-- Emergency Pass Section (P1) -->
+      <section class="emergency-section">
+        <div class="emergency-divider">
+          <span>OR</span>
+        </div>
+        <div class="emergency-card">
+          <div class="emergency-info">
+            <span class="emergency-badge">P1</span>
+            <div>
+              <h4 class="emergency-title">Urgent Task? Use Emergency Pass</h4>
+              <p class="emergency-desc">Unlocks all sites immediately for <strong>5 minutes</strong>. Usable only <strong>once per calendar day</strong>.</p>
+            </div>
+          </div>
+          <button id="btnEmergencyPass" class="btn btn-outline-danger" type="button">
+            Use Emergency Pass (5 Min)
+          </button>
+        </div>
+        <p id="emergencyAlert" class="emergency-alert hidden"></p>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="lesson-footer">
+      <span>LearnGate • 100% Offline • Zero Data Collected • Powered by Ollama Local AI</span>
+    </footer>
+  </div>
+
+  <script type="module" src="lesson.js"></script>
+</body>
+</html>
