@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LearnGate Settings</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="brand">
+        <div class="logo-badge">LG</div>
+        <div>
+          <h1 class="title">LearnGate</h1>
+          <p class="subtitle">Local Study Friction Gate</p>
+        </div>
+      </div>
+      <div id="statusIndicator" class="status-badge status-checking">
+        <span class="status-dot"></span>
+        <span id="statusText">Checking Ollama...</span>
+      </div>
+    </header>
+
+    <!-- Lock Status Banner -->
+    <div id="lockStatusBar" class="lock-banner is-locked">
+      <div class="lock-icon-wrap">
+        <span id="lockStateIcon" class="lock-icon">🔒</span>
+      </div>
+      <div class="lock-info">
+        <span id="lockStateTitle" class="lock-title">Distracting Sites Locked</span>
+        <span id="lockStateDesc" class="lock-desc">Pass a 3-question quiz to unlock for 10 minutes</span>
+      </div>
+    </div>
+
+    <!-- Tab Navigation -->
+    <nav class="nav-tabs">
+      <button id="tabBtnNotes" class="tab-btn active" type="button">Study Notes</button>
+      <button id="tabBtnBank" class="tab-btn" type="button">Question Bank</button>
+      <button id="tabBtnSites" class="tab-btn" type="button">Blocked Sites</button>
+      <button id="tabBtnStats" class="tab-btn" type="button">Stats</button>
+    </nav>
+
+    <!-- Tab 1: Study Notes -->
+    <section id="tabNotes" class="tab-content active">
+      <div class="section-header">
+        <label for="notesInput" class="section-label">Your Study Notes</label>
+        <span class="char-count" id="notesCharCount">0 characters</span>
+      </div>
+      <textarea id="notesInput" class="notes-textarea" placeholder="Paste your study notes here (biology, history, computer science, law, etc.).
+
+LearnGate will synthesize 3-question recall quizzes directly from these notes using your local Ollama AI model (qwen3:4b)."></textarea>
+      
+      <div class="disclaimer-box">
+        <span class="disclaimer-icon">ℹ️</span>
+        <p class="disclaimer-text">Questions are AI-generated from your notes by <strong>qwen3:4b</strong> and may contain mistakes. Zero data leaves your computer.</p>
+      </div>
+
+      <div class="action-row">
+        <button id="btnSaveNotes" class="btn btn-secondary" type="button">Save Notes</button>
+        <button id="btnGenerate" class="btn btn-primary" type="button">
+          <span class="btn-text">Generate Questions</span>
+        </button>
+      </div>
+
+      <!-- Generation Progress Banner -->
+      <div id="generationProgress" class="progress-card hidden">
+        <div class="progress-bar-wrap">
+          <div id="progressBar" class="progress-bar" style="width: 0%;"></div>
+        </div>
+        <p id="progressMessage" class="progress-msg">Connecting to local model...</p>
+      </div>
+
+      <!-- Notice Alert -->
+      <div id="notesAlert" class="alert-box hidden"></div>
+    </section>
+
+    <!-- Tab 2: Question Bank -->
+    <section id="tabBank" class="tab-content">
+      <div class="section-header">
+        <span class="section-label">Cached Question Bank</span>
+        <span id="bankCountBadge" class="badge">0 questions</span>
+      </div>
+      
+      <div id="bankMetaCard" class="meta-card">
+        <div class="meta-row">
+          <span class="meta-title">Model:</span>
+          <span id="metaModel" class="meta-val">qwen3:4b</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-title">Last Generated:</span>
+          <span id="metaTime" class="meta-val">Never</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-title">Generation Time:</span>
+          <span id="metaDuration" class="meta-val">--</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-title">Accepted / Rejected:</span>
+          <span id="metaAcceptRatio" class="meta-val">0 / 0</span>
+        </div>
+      </div>
+
+      <div id="questionList" class="question-list">
+        <!-- Rendered dynamically -->
+        <p class="empty-state">No questions generated yet. Paste notes in the Study Notes tab and click Generate.</p>
+      </div>
+    </section>
+
+    <!-- Tab 3: Blocked Sites -->
+    <section id="tabSites" class="tab-content">
+      <div class="section-header">
+        <span class="section-label">Restricted Websites</span>
+      </div>
+      <p class="hint-text">Visiting these domains or paths redirects to your Lesson Gate:</p>
+      
+      <div class="add-site-form">
+        <input type="text" id="newSiteInput" class="input-field" placeholder="e.g. reddit.com or twitter.com">
+        <button id="btnAddSite" class="btn btn-primary btn-sm" type="button">Add Site</button>
+      </div>
+
+      <ul id="siteList" class="site-list">
+        <!-- Rendered dynamically -->
+      </ul>
+      <p id="siteAlert" class="site-alert hidden"></p>
+    </section>
+
+    <!-- Tab 4: Stats & Rules -->
+    <section id="tabStats" class="tab-content">
+      <div class="section-header">
+        <span class="section-label">Focus & Quiz Statistics</span>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-number" id="statBlocks">0</span>
+          <span class="stat-label">Distractions Intercepted</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" id="statPasses">0</span>
+          <span class="stat-label">Lessons Passed (10m Unlock)</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" id="statFailures">0</span>
+          <span class="stat-label">Lessons Failed</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" id="statEmergency">0</span>
+          <span class="stat-label">Emergency Unlocks Used</span>
+        </div>
+      </div>
+
+      <div class="contract-card">
+        <h4 class="contract-title">Enforced Gate Settings</h4>
+        <ul class="contract-list">
+          <li><strong>Unlock Duration:</strong> 10 minutes upon passing</li>
+          <li><strong>Questions Per Lesson:</strong> 3 multiple-choice questions</li>
+          <li><strong>Pass Mark:</strong> 2 out of 3 correct answers</li>
+          <li><strong>Emergency Pass:</strong> 5 minutes, once per calendar day</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <span>100% Offline via Ollama • <a href="../docs/evidence.md" id="linkDocs" target="_blank">Evidence & Docs</a></span>
+    </footer>
+  </div>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#e0e7ff"/>
+    </linearGradient>
+  </defs>
+  <!-- Background rounded squircle -->
+  <rect x="8" y="8" width="112" height="112" rx="28" fill="url(#bgGrad)"/>
+  
+  <!-- Shield outline -->
+  <path d="M64 24 L94 38 V64 C94 84 81 101 64 107 C47 101 34 84 34 64 V38 Z" fill="url(#shieldGrad)" opacity="0.95"/>
+  
+  <!-- Book / Knowledge Pages inside Shield -->
+  <path d="M48 52 C54 50 60 50 64 54 C68 50 74 50 80 52 V78 C74 76 68 76 64 80 C60 76 54 76 48 78 Z" fill="#4f46e5"/>
+  <path d="M64 54 V80" stroke="#ffffff" stroke-width="2"/>
+</svg>
