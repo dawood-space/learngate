@@ -1,0 +1,12 @@
+An operating system acts as an intermediary between computer hardware and user applications.
+A process is an active program in execution that has its own dedicated address space and system resources.
+A thread is the smallest sequence of programmed instructions that can be managed independently by a CPU scheduler.
+Multiple threads within the same process share common code, data, and open file handles, but retain separate call stacks.
+CPU scheduling algorithms determine which ready process receives CPU time, including First-Come First-Served, Round Robin, and Shortest Job First.
+Virtual memory allows a computer to compensate for physical RAM shortages by temporarily transferring data to disk storage.
+Paging divides virtual memory into fixed-size blocks called pages, which map to physical memory frames.
+A page fault occurs when a program attempts to access memory data that is not currently loaded in physical RAM.
+A deadlock occurs when a set of processes are blocked because each process holds a resource and waits for another resource held by another process.
+The four necessary conditions for deadlock are mutual exclusion, hold and wait, no preemption, and circular wait.
+The operating system kernel executes in privileged supervisor mode, while regular user applications run in user mode.
+Context switching is the mechanism where the CPU saves the state of a running process and loads the state of another process.
