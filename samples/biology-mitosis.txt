@@ -1,0 +1,15 @@
+Mitosis is the process of cell division where a single eukaryotic cell divides into two genetically identical daughter cells.
+The cell cycle consists of interphase and the M phase, which includes mitosis and cytokinesis.
+During interphase, the cell grows, replicates its DNA in the S phase, and prepares for division in the G2 phase.
+Mitosis is divided into four main stages: prophase, metaphase, anaphase, and telophase.
+In prophase, chromatin condenses into visible chromosomes and the nuclear envelope begins to break down.
+The centrosomes move to opposite poles of the cell and assemble the mitotic spindle fibers.
+In metaphase, chromosomes line up along the equatorial plane of the cell known as the metaphase plate.
+Spindle fibers attach to the kinetochores located at the centromere of each chromosome.
+During anaphase, sister chromatids are pulled apart toward opposite poles by the shortening spindle microtubules.
+In telophase, nuclear membranes reform around each set of separated chromosomes at the cell poles.
+The chromosomes begin to decondense back into diffuse chromatin during telophase.
+Cytokinesis completes the cell division process by dividing the cytoplasm into two separate individual cells.
+In animal cells, cytokinesis occurs through the formation of a cleavage furrow.
+In plant cells, cytokinesis occurs through the formation of a cell plate due to the rigid cell wall.
+Errors during mitosis can result in aneuploidy, which is an abnormal number of chromosomes in the daughter cells.

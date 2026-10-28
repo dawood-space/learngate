@@ -1,0 +1,12 @@
+Human memory is categorized into sensory memory, short-term working memory, and long-term memory.
+Sensory memory holds brief impressions of environmental sensory stimuli for less than a second.
+Iconic memory refers to temporary visual sensory storage, while echoic memory refers to auditory sensory storage.
+Working memory can actively hold and manipulate a limited amount of information, typically around four to seven chunks.
+The prefrontal cortex plays a vital role in coordinating working memory and decision-making processes.
+Long-term memory is divided into explicit declarative memory and implicit non-declarative memory.
+Explicit memory includes episodic memory for personal life experiences and semantic memory for general factual knowledge.
+The hippocampus is essential for consolidating new declarative memories from short-term into long-term storage.
+Implicit memory includes procedural memory, such as motor skills like riding a bicycle or typing on a keyboard.
+Retrieval cues facilitate the recall of stored memories by reactivating associated neural pathways.
+The spacing effect demonstrates that learning is more effective when study sessions are distributed over time rather than crammed.
+Cognitive load theory suggests that learning is impeded when instructional materials overload the capacity of working memory.
